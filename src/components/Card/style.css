@@ -1,0 +1,87 @@
+.card-product {
+  flex: 1 1 150px;
+  margin: -12px 0px 0px 50px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.options-background-img {
+  background: white;
+  width: 145px;
+  height: 145px;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 10px solid gold;
+  margin: 0px 0px 0px 0px;
+}
+
+.names {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  padding-bottom: 7px;
+  font-weight: 633;
+  font-size: 20px;
+}
+
+.ingredients {
+  color: dodgerblue;
+  font-weight: 800;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  padding-top: 5px;
+  padding-bottom: 12px;
+  /* height: 30px; */
+  max-width: 200px;
+}
+
+.price {
+  padding-top: 7px;
+  color: chocolate;
+  font-weight: 700;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+}
+
+.quantity {
+  font-weight: 700;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  /* margin-top: 10px; */
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.input {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  max-width: 50px;
+  margin: 0 20px 0 20px;
+  border-radius: 4px;
+  outline: none;
+  text-align: center;
+  border: 1px solid gray;
+}
+
+.in-basket {
+  font-size: 13px;
+  background: gold;
+  color: white;
+  font-weight: 800;
+  /* padding: 3px 3px; */
+  min-width: 150px;
+  margin-top: 5px;
+  /* margin-bottom: 30px; */
+  border: solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}

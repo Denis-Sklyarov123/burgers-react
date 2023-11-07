@@ -1,0 +1,33 @@
+.container-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: whitesmoke;
+  margin: 20px 0px 20px 46px;
+  width: 232px;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  line-height: 55px;
+  border-radius: 10px;
+  overflow: hidden;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.menu-item {
+  background: whitesmoke;
+  border: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+}
+
+.menu-item:hover {
+  background: orange;
+  color: white;
+  cursor: pointer;
+}
+
+.active {
+  background-color: orange;
+}
