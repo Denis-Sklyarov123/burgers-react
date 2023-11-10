@@ -13,6 +13,14 @@ body {
   background-image: url(src/assets/img/wood1.png);
   display: flex;
   place-items: center;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 h1 {

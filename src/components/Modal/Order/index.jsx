@@ -4,6 +4,7 @@ import "./style.css";
 import { titleList } from "../../../constants";
 import CardContainer from "./CardContainer";
 import Api from "../../../api/api";
+import PrevNextContainer from "./PrevNextContainer";
 
 function ModalWindow({ isOpen, setIsOpen }) {
   const [activeCategory, setActiveCategory] = useState("sizes");
@@ -43,8 +44,13 @@ function ModalWindow({ isOpen, setIsOpen }) {
                 setActiveCategory={setActiveCategory}
               />
             </div>
-
-            <div className="menu-products" id="size-menu"></div>
+            <div>
+              <PrevNextContainer
+                setTitle={setTitle}
+                title={title}
+                setActiveCategory={setActiveCategory}
+              />
+            </div>
 
             <div>
               {cards.sizes && <CardContainer cards={cards[activeCategory]} />}

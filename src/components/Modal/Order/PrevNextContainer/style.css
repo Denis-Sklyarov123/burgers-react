@@ -1,0 +1,15 @@
+.menu-products {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.size {
+  display: flex;
+  justify-content: flex-end;
+  color: black;
+  margin-bottom: 5px;
+  position: relative;
+}
