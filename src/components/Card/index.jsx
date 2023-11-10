@@ -1,6 +1,6 @@
 import "./style.css";
 
-function Card({ item }) {
+function Card({ item, callback }) {
   const makeImgUrl = (url) => `/src/assets/img${url}`;
 
   return (
@@ -9,7 +9,9 @@ function Card({ item }) {
         <img className="subway" src="/src/assets/img/SUBWAY1.png" />
         <img className="options-background-img" src={makeImgUrl(item.image)} />
         <div className="names">{item.name}</div>
-        <div className="ingredients">{item.description}</div>
+        <div className="ingredients" onClick={() => callback(true)}>
+          {item.description}
+        </div>
         <div className="price">Цена: {item.price} руб.</div>
         <div className="quantity">КОЛИЧЕСТВО</div>
         <div className="buttons">

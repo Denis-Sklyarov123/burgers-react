@@ -1,0 +1,60 @@
+.product-size-card-buttons {
+  display: flex;
+  flex-direction: column;
+  background: rgb(228, 219, 219);
+  border: none;
+  border-radius: 5px;
+}
+
+.options-background-little-bread {
+  background: white;
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 10px solid gold;
+  margin: 10px 0px 0px 0px;
+}
+
+.img-filling {
+  margin: 30px 0px 0px 0px;
+  width: 100px;
+  border-radius: 45%;
+}
+
+.the-final-filling-in-the-product {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 633;
+  font-size: 17px;
+  padding-top: 15px;
+  width: 150px;
+  text-underline-offset: 3px;
+  border-bottom: 3px solid black;
+  height: 65px;
+  max-width: 200px;
+  padding-bottom: 10px;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.price-size-letters {
+  color: chocolate;
+  font-weight: 700;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  padding-top: 6px;
+  width: 150px;
+  padding-bottom: 20px;
+  display: inline;
+}
+
+.price-filling {
+  color: chocolate;
+  font-weight: 700;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  padding-top: 6px;
+  width: 150px;
+  padding-bottom: 5px;
+  display: inline;
+}

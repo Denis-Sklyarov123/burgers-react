@@ -1,0 +1,31 @@
+.item-modal-window-menu {
+  /* width: 100px;
+  border: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  background: white; */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 17px;
+  background: white;
+  width: 18%;
+  border: 0;
+  text-align: center;
+  padding-top: 7px;
+}
+
+.item-modal-window-menu.open {
+  width: 18%;
+  border: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  background: rgb(224, 116, 116);
+  color: white;
+}
+
+.item-modal-window-menu:hover {
+  background: rgb(224, 116, 116);
+  color: white;
+  cursor: pointer;
+}

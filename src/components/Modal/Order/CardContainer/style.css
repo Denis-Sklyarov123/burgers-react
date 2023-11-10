@@ -1,0 +1,17 @@
+.size-cards {
+  /* display: flex; */
+  /* column-count: 2; */
+  /* display: flex;
+  flex-direction: row; */
+  /* background: rgb(228, 219, 219); */
+  /* border-radius: 6px; */
+  /* margin: -85px 0px 0px 0px; */
+  /* padding: 12px 26px 10px 26px; */
+  /* overflow: auto; */
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 42vh;
+  overflow-y: auto;
+  /* margin-bottom: 20px; */
+}

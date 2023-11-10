@@ -1,11 +1,11 @@
 import Card from "../Card/index";
 import "./style.css";
 
-function CardContainer({ cards }) {
+function CardContainer({ cards, setIsOpen }) {
   return (
     <div className="all-product-card-windows">
-      {cards.map((item) => (
-        <Card key={Math.random()} item={item} />
+      {cards.map((item, index) => (
+        <Card key={index} item={item} callback={setIsOpen} />
       ))}
     </div>
   );

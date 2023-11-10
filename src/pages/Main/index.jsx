@@ -1,43 +1,15 @@
 import { useEffect, useState } from "react";
+import { menu } from "../../constants/index";
 import Basket from "../../components/Basket/index";
 import Menu from "../../components/Menu/index";
 import Api from "../../api/api";
 import CardContainer from "../../components/CardContainer";
+import ModalWindow from "../../components/Modal/Order";
 
 export function Main() {
-  const menu = [
-    {
-      keyCategory: "sandwiches",
-      nameCategory: "Сендвичи",
-    },
-    {
-      keyCategory: "burgers",
-      nameCategory: "Бургеры",
-    },
-    {
-      keyCategory: "pizza",
-      nameCategory: "Пицца",
-    },
-    {
-      keyCategory: "shaurma",
-      nameCategory: "Шаурма",
-    },
-    {
-      keyCategory: "salads",
-      nameCategory: "Тортилья и Салаты",
-    },
-    {
-      keyCategory: "chicken",
-      nameCategory: "Курица и Картошка",
-    },
-    {
-      keyCategory: "drinks",
-      nameCategory: "Напитки и Десерт",
-    },
-  ];
-
   const [activeCategory, setActiveCategory] = useState("sandwiches");
   const [cards, setCards] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     Api.getData().then((data) => {
@@ -56,7 +28,10 @@ export function Main() {
         <Basket />
       </div>
       <div>
-        <CardContainer cards={cards} />
+        <CardContainer setIsOpen={setIsOpen} cards={cards} />
+      </div>
+      <div>
+        <ModalWindow isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
     </div>
   );
