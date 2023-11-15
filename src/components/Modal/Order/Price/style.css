@@ -1,0 +1,24 @@
+.price {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.price-in-the-basket {
+  padding-top: 7px;
+  color: chocolate;
+  font-weight: 700;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+}
+
+.price-in-basket-letters {
+  padding-top: 7px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  color: chocolate;
+  font-weight: 700;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+}

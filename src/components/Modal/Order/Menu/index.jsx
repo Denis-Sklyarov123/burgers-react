@@ -9,7 +9,8 @@ function Menu({ title, callback, setActiveCategory }) {
           key={item.keyCategory}
           className={`item-modal-window-menu ${title === index ? "open" : ""}`}
           onClick={() => {
-            callback(index), setActiveCategory(item.keyCategory);
+            callback(index);
+            setActiveCategory(item.keyCategory);
           }}
         >
           {item.nameCategory}

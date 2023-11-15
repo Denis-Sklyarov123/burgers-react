@@ -2,7 +2,7 @@
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
-  max-height: 42vh;
+  max-height: 35vh;
   overflow-y: auto;
   overflow: auto;
   -ms-overflow-style: none;

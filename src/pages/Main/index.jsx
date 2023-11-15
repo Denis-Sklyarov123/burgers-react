@@ -8,14 +8,14 @@ import ModalWindow from "../../components/Modal/Order";
 
 export function Main() {
   const [activeCategory, setActiveCategory] = useState("sandwiches");
-  const [cards, setCards] = useState([]);
+  const [data, setData] = useState();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     Api.getData().then((data) => {
-      setCards(data.menu.filter((item) => item.category === activeCategory));
+      setData(data);
     });
-  }, [activeCategory]);
+  }, []);
 
   return (
     <div className="d-flex flex-row overflow-auto">
@@ -28,10 +28,17 @@ export function Main() {
         <Basket />
       </div>
       <div>
-        <CardContainer setIsOpen={setIsOpen} cards={cards} />
+        {data && (
+          <CardContainer
+            setIsOpen={setIsOpen}
+            cards={data.menu.filter((item) => item.category === activeCategory)}
+          />
+        )}
       </div>
       <div>
-        <ModalWindow isOpen={isOpen} setIsOpen={setIsOpen} />
+        {data && (
+          <ModalWindow cards={data} isOpen={isOpen} setIsOpen={setIsOpen} />
+        )}
       </div>
     </div>
   );

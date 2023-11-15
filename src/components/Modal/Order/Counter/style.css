@@ -1,0 +1,19 @@
+.price-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+
+.input-in-modal-window {
+  max-width: 40px;
+  margin: 0 20px 0 20px;
+  border: 1px solid gray;
+  padding: 0px 20px 0px 15px;
+  border-radius: 4px;
+  outline: none;
+  text-align: center;
+  font-size: 14px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
