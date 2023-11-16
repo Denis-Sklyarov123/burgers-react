@@ -1,4 +1,4 @@
-import { modalMenuItems } from "../../../../constants";
+import { modalMenuItems } from "../../../../../constants";
 import "./style.css";
 
 function Card({ item, setOrder, order, title, isActive }) {

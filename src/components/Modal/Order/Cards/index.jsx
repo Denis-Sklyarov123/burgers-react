@@ -1,5 +1,5 @@
 import { modalMenuItems } from "../../../../constants";
-import Card from "../Card/index";
+import Card from "./Card/index";
 import "./style.css";
 
 function CardContainer({ cards, setOrder, order, title }) {

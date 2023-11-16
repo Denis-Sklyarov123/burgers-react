@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import Menu from "./Menu";
 import "./style.css";
 import { titleList } from "../../../constants";
-import CardContainer from "./CardContainer";
+import CardContainer from "./Cards";
 import PrevNextContainer from "./PrevNextContainer";
 import ReadySection from "./ReadySection";
-import Counter from "./CounterContainer";
 import BtnInBasket from "./BtnInBasket";
 import Price from "./Price";
+import Counter from "./Counter/index";
 
 function ModalWindow({ isOpen, setIsOpen, cards }) {
   const [activeCategory, setActiveCategory] = useState("sizes");
