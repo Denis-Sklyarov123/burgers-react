@@ -5,15 +5,19 @@ import { titleList } from "../../../constants";
 import CardContainer from "./Cards";
 import PrevNextContainer from "./PrevNextContainer";
 import ReadySection from "./ReadySection";
-import BtnInBasket from "./BtnInBasket";
+import BtnCustom from "../../BtnCustom";
 import Price from "./Price";
 import Counter from "./Counter/index";
+import { useSelector } from "react-redux";
+
 
 function ModalWindow({ isOpen, setIsOpen, cards }) {
   const [activeCategory, setActiveCategory] = useState("sizes");
   const [title, setTitle] = useState(0);
   const [sum, setSum] = useState(0);
   const [order, setOrder] = useState({});
+  // const [count, setCount] = useState(1);
+  const count = useSelector((state) => state.order.count);
 
   useEffect(() => {
     let _sum = 0;
@@ -30,22 +34,10 @@ function ModalWindow({ isOpen, setIsOpen, cards }) {
       _sum = 0;
     }
 
-    setSum(_sum);
-  }, [order]);
+    _sum = _sum * count;
 
-  // let sum = 0;
-  // for (const category in order) {
-  //   if (Array.isArray(order[category])) {
-  //     order[category].forEach((item) => {
-  //       sum += item.price;
-  //     });
-  //   } else {
-  //     sum += order[category].price;
-  //   }
-  // }
-  // if (isNaN(sum)) {
-  //   sum = 0;
-  // }
+    setSum(_sum);
+  }, [order, count]);
 
   return (
     <>
@@ -108,7 +100,7 @@ function ModalWindow({ isOpen, setIsOpen, cards }) {
                 <Price sum={sum} />
               </div>
               <div>
-                <BtnInBasket />
+                <BtnCustom classList="add-to-final-price">В КОРЗИНУ</BtnCustom>
               </div>
             </div>
           </div>

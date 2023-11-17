@@ -1,24 +1,26 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./style.css";
+import { countIncrement, countDecrement } from "../store";
 
 function Counter() {
-  const [count, setCount] = useState(1);
+  // const [count, setCount] = useState(1);
+  const count = useSelector((state) => state.order.count);
+  const dispatch = useDispatch();
 
   return (
     <div className="buttons-and-quantity">
       <div className="quantity-in-modal">КОЛИЧЕСТВО</div>
       <div className="price-buttons">
         <img
-          onClick={() => setCount((state) => (state === 1 ? state : --state))}
+          onClick={() => dispatch(countDecrement())}
           id="id-minus-in-modal-window"
           className="minus-in-modal-window"
           src="src/assets/img/minus.svg"
         />
 
-        <div className="input-in-modal-window">{count}</div>
-
+        {count && <div className="input-in-modal-window">{count}</div>}
         <img
-          onClick={() => setCount((state) => ++state)}
+          onClick={() => dispatch(countIncrement())}
           id="id-plus-in-modal-window"
           className="plus-in-modal-window"
           src="src/assets/img/plus.svg"

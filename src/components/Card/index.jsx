@@ -1,7 +1,12 @@
+import BtnCustom from "../BtnCustom";
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement } from "../../store/test/index";
 import "./style.css";
 
 function Card({ item, callback }) {
   const makeImgUrl = (url) => `/src/assets/img${url}`;
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -15,13 +20,20 @@ function Card({ item, callback }) {
         <div className="price">Цена: {item.price} руб.</div>
         <div className="quantity">КОЛИЧЕСТВО</div>
         <div className="buttons">
-          <img className="minus" src="src/assets/img/minus.svg" />
-          <input value="1" className="input" />
-          <img className="plus" src="src/assets/img/plus.svg" />
+          <img
+            className="minus"
+            src="src/assets/img/minus.svg"
+            onClick={() => dispatch(decrement())}
+          />
+          <input value={count} className="input" />
+          <img
+            className="plus"
+            src="src/assets/img/plus.svg"
+            onClick={() => dispatch(increment())}
+          />
         </div>
-        <button id="${this.id}" className="in-basket">
-          В КОРЗИНУ
-        </button>
+        <div></div>
+        <BtnCustom classList="in-basket">В КОРЗИНУ</BtnCustom>
       </div>
     </>
   );

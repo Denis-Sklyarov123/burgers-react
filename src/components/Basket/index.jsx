@@ -1,6 +1,12 @@
+import { useState } from "react";
+import BtnCustom from "../BtnCustom";
 import "./style.css";
 
 function Basket() {
+  const [finalCount, setFinalCount] = useState();
+  const [finalSum, setFinalSum] = useState(0);
+  const [finalName, setFinalName] = useState();
+
   return (
     <div className="basket-container">
       <div className="title-icon">
@@ -11,7 +17,7 @@ function Basket() {
       <div className="container-values-basket" id="container-final-values">
         <div className="container-quantity-and-name">
           <div className="order-name-and-quantity" id="total-order-name">
-            <div id="main-name-product">Название:</div>
+            <div id="main-name-product">Название: {finalName}</div>
             <div
               className="order-name-and-quantity-value"
               id="total-order-name-value"
@@ -19,7 +25,7 @@ function Basket() {
           </div>
 
           <div className="order-name-and-quantity" id="total-order-quantity">
-            Количество:
+            Количество: {finalCount}
             <div
               className="order-name-and-quantity-value"
               id="total-order-quantity-value"
@@ -31,35 +37,16 @@ function Basket() {
           <div className="final-purchase-price">Итого:</div>
 
           <div className="final-purchase-price" id="id-final-purchase-price">
-            0
+            {finalSum}
           </div>
 
           <div className="final-purchase-price">руб.</div>
         </div>
       </div>
       <div className="checkout">
-        <button className="ordering-food">ОФОРМИТЬ ЗАКАЗ</button>
+        <BtnCustom classList="ordering-food">ОФОРМИТЬ ЗАКАЗ</BtnCustom>
       </div>
     </div>
-    // <div className="basket-container">
-    //   <div className="title-icon">Корзина</div>
-    //   <div className="container-values-basket">
-    //     <div className="container-quantity-and-name">
-    //       <div className="order-name-and-quantity">
-    //         <div id="main-name-product">Название:</div>
-    //       </div>
-    //       <div className="order-name-and-quantity">Количество:</div>
-    //     </div>
-    //     <div className="total">
-    //       <div className="final-purchase-price">Итого:</div>
-    //       <div className="final-purchase-price">0</div>
-    //       <div className="final-purchase-price">руб.</div>
-    //     </div>
-    //   </div>
-    //   <div className="checkout">
-    //     <button className="ordering-food">ОФОРМИТЬ ЗАКАЗ</button>
-    //   </div>
-    // </div>
   );
 }
 
