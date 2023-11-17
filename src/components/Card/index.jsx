@@ -2,8 +2,9 @@ import BtnCustom from "../BtnCustom";
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement } from "../../store/test/index";
 import "./style.css";
+import { setIsOpen, setName } from "../../pages/Main/store/index";
 
-function Card({ item, callback }) {
+function Card({ item }) {
   const makeImgUrl = (url) => `/src/assets/img${url}`;
   const count = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
@@ -14,7 +15,13 @@ function Card({ item, callback }) {
         <img className="subway" src="/src/assets/img/SUBWAY1.png" />
         <img className="options-background-img" src={makeImgUrl(item.image)} />
         <div className="names">{item.name}</div>
-        <div className="ingredients" onClick={() => callback(true)}>
+        <div
+          className="ingredients"
+          onClick={() => {
+            dispatch(setIsOpen(true));
+            dispatch(setName(item.name));
+          }}
+        >
           {item.description}
         </div>
         <div className="price">Цена: {item.price} руб.</div>

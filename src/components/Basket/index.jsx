@@ -1,9 +1,11 @@
 import { useState } from "react";
 import BtnCustom from "../BtnCustom";
 import "./style.css";
+import { useSelector } from "react-redux";
 
 function Basket() {
-  const [finalCount, setFinalCount] = useState();
+  const finalCount = useSelector((state) => state.mainPage.finalCount);
+  // const [finalCount, setFinalCount] = useState();
   const [finalSum, setFinalSum] = useState(0);
   const [finalName, setFinalName] = useState();
 
@@ -44,7 +46,7 @@ function Basket() {
         </div>
       </div>
       <div className="checkout">
-        <BtnCustom classList="ordering-food">ОФОРМИТЬ ЗАКАЗ</BtnCustom>
+        <BtnCustom classList="ordering-food" >ОФОРМИТЬ ЗАКАЗ</BtnCustom>
       </div>
     </div>
   );

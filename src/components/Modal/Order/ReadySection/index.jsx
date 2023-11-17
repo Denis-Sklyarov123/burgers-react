@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
 import "./style.css";
 
 function ReadySection({ order }) {
+  const name = useSelector((state) => state.mainPage.name);
+
   return (
     <>
       <div className="selection-columns">
@@ -53,7 +56,7 @@ function ReadySection({ order }) {
               </div>
             </div>
 
-            <div className="name-final-product">Овощной</div>
+            <div className="name-final-product">{name}</div>
           </div>
         </div>
       </div>

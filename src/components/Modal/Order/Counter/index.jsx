@@ -3,8 +3,7 @@ import "./style.css";
 import { countIncrement, countDecrement } from "../store";
 
 function Counter() {
-  // const [count, setCount] = useState(1);
-  const count = useSelector((state) => state.order.count);
+  const count = useSelector((state) => state.modalOrder.count);
   const dispatch = useDispatch();
 
   return (

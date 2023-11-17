@@ -1,9 +1,12 @@
+import { useDispatch } from "react-redux";
 import { modalMenuItems } from "../../../../../constants";
 import "./style.css";
+import { setOrder } from "../../store/index";
 
-function Card({ item, setOrder, order, title, isActive }) {
+function Card({ item, order, title, isActive }) {
   const makeImgUrl = (url) => `/src/assets/img${url}`;
   const keyCategory = modalMenuItems[title].keyCategory;
+  const dispatch = useDispatch();
 
   const orderFormation = () => {
     if (keyCategory === "vegetables" || keyCategory === "sauces") {
@@ -12,37 +15,47 @@ function Card({ item, setOrder, order, title, isActive }) {
           (order) => order.name === item.name
         );
         if (isContain) {
-          setOrder({
-            ...order,
-            [keyCategory]: order[keyCategory].filter(
-              (order) => order.name !== item.name
-            ),
-          });
+          dispatch(
+            setOrder({
+              ...order,
+              [keyCategory]: order[keyCategory].filter(
+                (order) => order.name !== item.name
+              ),
+            })
+          );
           return;
         }
         if (order[keyCategory].length === 3) {
-          setOrder({
-            ...order,
-            [keyCategory]: [...order[keyCategory].slice(1), item],
-          });
+          dispatch(
+            setOrder({
+              ...order,
+              [keyCategory]: [...order[keyCategory].slice(1), item],
+            })
+          );
           return;
         }
-        setOrder({
-          ...order,
-          [keyCategory]: [...order[keyCategory], item],
-        });
+        dispatch(
+          setOrder({
+            ...order,
+            [keyCategory]: [...order[keyCategory], item],
+          })
+        );
         return;
       }
-      setOrder({
-        ...order,
-        [keyCategory]: [item],
-      });
+      dispatch(
+        setOrder({
+          ...order,
+          [keyCategory]: [item],
+        })
+      );
       return;
     }
-    setOrder({
-      ...order,
-      [keyCategory]: item,
-    });
+    dispatch(
+      setOrder({
+        ...order,
+        [keyCategory]: item,
+      })
+    );
   };
 
   return (

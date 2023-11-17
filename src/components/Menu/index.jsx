@@ -1,6 +1,10 @@
+import { useDispatch } from "react-redux";
 import "./style.css";
+import { setActiveCategory } from "../../pages/Main/store/index";
 
-function Menu({ menu, activeCategory, callback }) {
+function Menu({ menu, activeCategory }) {
+  const dispatch = useDispatch();
+
   return (
     <ul className="container-menu">
       {menu.map((item) => (
@@ -9,7 +13,7 @@ function Menu({ menu, activeCategory, callback }) {
           className={`menu-item ${
             activeCategory === item.keyCategory ? "active" : ""
           }`}
-          onClick={() => callback(item.keyCategory)}
+          onClick={() => dispatch(setActiveCategory(item.keyCategory))}
         >
           {item.nameCategory}
         </div>

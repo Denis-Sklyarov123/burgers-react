@@ -2,7 +2,7 @@ import { modalMenuItems } from "../../../../constants";
 import Card from "./Card/index";
 import "./style.css";
 
-function CardContainer({ cards, setOrder, order, title }) {
+function Cards({ cards, order, title }) {
   const keyCategory = modalMenuItems[title].keyCategory;
 
   const examination = (item) => {
@@ -23,7 +23,6 @@ function CardContainer({ cards, setOrder, order, title }) {
           key={item.name}
           order={order}
           title={title}
-          setOrder={setOrder}
           item={item}
         />
       ))}
@@ -31,4 +30,4 @@ function CardContainer({ cards, setOrder, order, title }) {
   );
 }
 
-export default CardContainer;
+export default Cards;

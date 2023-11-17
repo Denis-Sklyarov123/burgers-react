@@ -5,10 +5,11 @@ const initialState = {
   title: 0,
   sum: 0,
   activeCategory: "sizes",
+  order: {},
 };
 
 export const counterSlice = createSlice({
-  name: "order",
+  name: "modalOrder",
   initialState,
   reducers: {
     setCount: (state, value) => {
@@ -30,6 +31,9 @@ export const counterSlice = createSlice({
     setActiveCategory: (state, value) => {
       state.activeCategory = value.payload;
     },
+    setOrder: (state, value) => {
+      state.order = value.payload;
+    },
   },
 });
 
@@ -39,6 +43,7 @@ export const {
   setTitle,
   setSum,
   setActiveCategory,
+  setOrder,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
