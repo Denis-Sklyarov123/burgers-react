@@ -1,7 +1,11 @@
 import { modalMenuItems } from "../../../../constants";
 import "./style.css";
+import { setActiveCategory, setTitle } from "../store/index";
+import { useDispatch } from "react-redux";
 
-function Menu({ title, callback, setActiveCategory }) {
+function Menu({ title }) {
+  const dispatch = useDispatch();
+
   return (
     <div className="items-menu" id="modal-menu">
       {modalMenuItems.map((item, index) => (
@@ -9,8 +13,8 @@ function Menu({ title, callback, setActiveCategory }) {
           key={item.keyCategory}
           className={`item-modal-window-menu ${title === index ? "open" : ""}`}
           onClick={() => {
-            callback(index);
-            setActiveCategory(item.keyCategory);
+            dispatch(setTitle(index));
+            dispatch(setActiveCategory(item.keyCategory));
           }}
         >
           {item.nameCategory}

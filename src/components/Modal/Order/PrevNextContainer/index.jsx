@@ -1,16 +1,20 @@
+import { useDispatch } from "react-redux";
 import { modalMenuItems } from "../../../../constants";
 import BtnPrevNext from "../BtnPrevNext";
 import "./style.css";
+import { setActiveCategory, setTitle } from "../store";
 
-function PrevNextContainer({ title, setTitle, setActiveCategory }) {
+function PrevNextContainer({ title }) {
+  const dispatch = useDispatch();
+
   const onClickNext = () => {
-    setActiveCategory(modalMenuItems[title + 1].keyCategory);
-    setTitle(title + 1);
+    dispatch(setActiveCategory(modalMenuItems[title + 1].keyCategory));
+    dispatch(setTitle(title + 1));
   };
 
   const onClickPrev = () => {
-    setActiveCategory(modalMenuItems[title - 1].keyCategory);
-    setTitle(title - 1);
+    dispatch(setActiveCategory(modalMenuItems[title - 1].keyCategory));
+    dispatch(setTitle(title - 1));
   };
 
   return (

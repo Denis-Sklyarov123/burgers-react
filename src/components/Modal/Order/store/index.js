@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   count: 1,
   title: 0,
+  sum: 0,
+  activeCategory: "sizes",
 };
 
 export const counterSlice = createSlice({
@@ -19,13 +21,24 @@ export const counterSlice = createSlice({
     countDecrement: (state) => {
       state.count = state.count === 1 ? state.count : --state.count;
     },
-    // setTitle: (state) => {
-
-    // }
+    setTitle: (state, value) => {
+      state.title = value.payload;
+    },
+    setSum: (state, value) => {
+      state.sum = value.payload;
+    },
+    setActiveCategory: (state, value) => {
+      state.activeCategory = value.payload;
+    },
   },
 });
 
-export const { countIncrement, countDecrement, setTitle } =
-  counterSlice.actions;
+export const {
+  countIncrement,
+  countDecrement,
+  setTitle,
+  setSum,
+  setActiveCategory,
+} = counterSlice.actions;
 
 export default counterSlice.reducer;

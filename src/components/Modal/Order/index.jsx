@@ -8,16 +8,20 @@ import ReadySection from "./ReadySection";
 import BtnCustom from "../../BtnCustom";
 import Price from "./Price";
 import Counter from "./Counter/index";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { setSum } from "./store";
 
 function ModalWindow({ isOpen, setIsOpen, cards }) {
-  const [activeCategory, setActiveCategory] = useState("sizes");
-  const [title, setTitle] = useState(0);
-  const [sum, setSum] = useState(0);
+  // const [activeCategory, setActiveCategory] = useState("sizes");
+  // const [title, setTitle] = useState(0);
+  // const [sum, setSum] = useState(0);
   const [order, setOrder] = useState({});
   // const [count, setCount] = useState(1);
   const count = useSelector((state) => state.order.count);
+  const title = useSelector((state) => state.order.title);
+  const sum = useSelector((state) => state.order.sum);
+  const activeCategory = useSelector((state) => state.order.activeCategory);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let _sum = 0;
@@ -36,7 +40,7 @@ function ModalWindow({ isOpen, setIsOpen, cards }) {
 
     _sum = _sum * count;
 
-    setSum(_sum);
+    dispatch(setSum(_sum));
   }, [order, count]);
 
   return (
@@ -60,18 +64,10 @@ function ModalWindow({ isOpen, setIsOpen, cards }) {
 
           <div className="modal-window-menu">
             <div>
-              <Menu
-                title={title}
-                callback={setTitle}
-                setActiveCategory={setActiveCategory}
-              />
+              <Menu title={title} />
             </div>
             <div>
-              <PrevNextContainer
-                setTitle={setTitle}
-                title={title}
-                setActiveCategory={setActiveCategory}
-              />
+              <PrevNextContainer title={title} />
             </div>
 
             <div>
