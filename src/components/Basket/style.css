@@ -19,8 +19,8 @@
 .basket-container {
   margin-left: 45px;
   margin-top: 50px;
-  width: 232px;
-  height: 232px;
+  /* width: 232px; */
+  /* height: 232px; */
   border-radius: 10px;
 }
 
@@ -64,14 +64,10 @@
   background: gold;
   color: white;
   font-weight: 800;
-  /* padding: 3px 3px; */
-  /* min-width: 150px; */
-  /* margin-top: 5px; */
-  /* margin-bottom: 30px; */
-  /* border: solid transparent; */
   border-radius: 5px;
   cursor: pointer;
   display: flex;
+  position: relative;
 }
 
 .order-name-and-quantity {
@@ -79,13 +75,16 @@
   color: black;
   display: inline-block;
   text-align: center;
-  height: 40px;
   width: 116px;
-  line-height: 40px;
+  line-height: 30px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 633;
   border-style: solid;
   border-width: 0px 0px 3px 0px;
   border-color: #ffd700;
   font-size: 17px;
+}
+
+.item-basket {
+  margin-top: 5px;
 }

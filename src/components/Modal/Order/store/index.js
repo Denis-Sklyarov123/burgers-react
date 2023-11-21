@@ -13,7 +13,6 @@ export const counterSlice = createSlice({
   initialState,
   reducers: {
     setCount: (state, value) => {
-      //   console.log(value);
       state.count = value.payload;
     },
     countIncrement: (state) => {
@@ -34,6 +33,7 @@ export const counterSlice = createSlice({
     setOrder: (state, value) => {
       state.order = value.payload;
     },
+    resetStore: () => initialState,
   },
 });
 
@@ -44,6 +44,7 @@ export const {
   setSum,
   setActiveCategory,
   setOrder,
+  resetStore,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

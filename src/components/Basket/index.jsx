@@ -1,13 +1,10 @@
-import { useState } from "react";
 import BtnCustom from "../BtnCustom";
 import "./style.css";
 import { useSelector } from "react-redux";
 
 function Basket() {
-  const finalCount = useSelector((state) => state.mainPage.finalCount);
-  // const [finalCount, setFinalCount] = useState();
-  const [finalSum, setFinalSum] = useState(0);
-  const [finalName, setFinalName] = useState();
+  const finalOrder = useSelector((state) => state.mainPage.finalOrder);
+  const finalSum = useSelector((state) => state.mainPage.finalSum);
 
   return (
     <div className="basket-container">
@@ -19,7 +16,15 @@ function Basket() {
       <div className="container-values-basket" id="container-final-values">
         <div className="container-quantity-and-name">
           <div className="order-name-and-quantity" id="total-order-name">
-            <div id="main-name-product">Название: {finalName}</div>
+            <div id="main-name-product">
+              Название:{" "}
+              {finalOrder &&
+                finalOrder.map((item) => (
+                  <div key={item.index} className="item-basket">
+                    {item.name}
+                  </div>
+                ))}{" "}
+            </div>
             <div
               className="order-name-and-quantity-value"
               id="total-order-name-value"
@@ -27,26 +32,29 @@ function Basket() {
           </div>
 
           <div className="order-name-and-quantity" id="total-order-quantity">
-            Количество: {finalCount}
-            <div
-              className="order-name-and-quantity-value"
-              id="total-order-quantity-value"
-            ></div>
+            Количество:
+            {finalOrder &&
+              finalOrder.map((item) => (
+                <div key={item.index} className="item-basket">
+                  {item.count}
+                </div>
+              ))}
           </div>
         </div>
         <div id="name-and-value-id"></div>
         <div className="total">
           <div className="final-purchase-price">Итого:</div>
 
-          <div className="final-purchase-price" id="id-final-purchase-price">
-            {finalSum}
-          </div>
+          <div
+            className="final-purchase-price"
+            id="id-final-purchase-price"
+          ></div>
 
-          <div className="final-purchase-price">руб.</div>
+          <div className="final-purchase-price">{finalSum} руб.</div>
         </div>
       </div>
       <div className="checkout">
-        <BtnCustom classList="ordering-food" >ОФОРМИТЬ ЗАКАЗ</BtnCustom>
+        <BtnCustom classList="ordering-food">ОФОРМИТЬ ЗАКАЗ</BtnCustom>
       </div>
     </div>
   );

@@ -9,14 +9,19 @@ import BtnCustom from "../../BtnCustom";
 import Price from "./Price";
 import Counter from "./Counter/index";
 import { useDispatch, useSelector } from "react-redux";
-import { setSum } from "./store";
-import { setFinalCount, setIsOpen } from "../../../pages/Main/store";
+import { setSum, resetStore } from "./store";
+import {
+  setIsOpen,
+  setFinalOrder,
+  accumulatorSum,
+} from "../../../pages/Main/store/index";
 
 function ModalWindow({ isOpen, cards }) {
   const count = useSelector((state) => state.modalOrder.count);
   const title = useSelector((state) => state.modalOrder.title);
   const sum = useSelector((state) => state.modalOrder.sum);
-  // const order = useSelector((state) => state.main.order);
+  const finalOrder = useSelector((state) => state.mainPage.finalOrder);
+  const name = useSelector((state) => state.mainPage.name);
   const activeCategory = useSelector(
     (state) => state.modalOrder.activeCategory
   );
@@ -37,16 +42,23 @@ function ModalWindow({ isOpen, cards }) {
     if (isNaN(_sum)) {
       _sum = 0;
     }
-    dispatch(setSum(_sum));
-  }, [dispatch, order]);
+    dispatch(setSum(_sum * count));
+  }, [dispatch, order, count]);
 
-  // const test = () => {
-  //   if (order.length) {
-  //     dispatch(setInBasket([...order, { name: "", sum, count }]));
-  //   } else {
-  //     dispatch(setInBasket([{ name: "", sum, count }]));
-  //   }
-  // };
+  const finalSum = () => {
+    dispatch(setFinalOrder([...finalOrder, { name, sum, count }]));
+    dispatch(accumulatorSum());
+  };
+
+  const closeModal = () => {
+    dispatch(setIsOpen(false));
+    dispatch(resetStore());
+  };
+
+  const makeAnOrder = () => {
+    closeModal();
+    finalSum();
+  };
 
   return (
     <>
@@ -55,7 +67,7 @@ function ModalWindow({ isOpen, cards }) {
           <button
             className="modal-close-btn"
             id="close-my-modal-btn"
-            onClick={() => dispatch(setIsOpen(false))}
+            onClick={() => closeModal()}
           >
             <img
               className="close"
@@ -97,12 +109,12 @@ function ModalWindow({ isOpen, cards }) {
             </div>
             <div className="price-and-basket">
               <div>
-                <Price sum={sum * count} />
+                <Price sum={sum} />
               </div>
               <div>
                 <BtnCustom
                   classList="add-to-final-price"
-                  callback={setFinalCount(sum)}
+                  callback={makeAnOrder}
                 >
                   В КОРЗИНУ
                 </BtnCustom>

@@ -6,6 +6,8 @@ const initialState = {
   isOpen: false,
   data: null,
   finalCount: null,
+  finalOrder: [],
+  finalSum: 0,
 };
 
 export const counterSlice = createSlice({
@@ -27,10 +29,26 @@ export const counterSlice = createSlice({
     setName: (state, value) => {
       state.name = value.payload;
     },
+    setFinalOrder: (state, value) => {
+      state.finalOrder = value.payload;
+    },
+    accumulatorSum: (state) => {
+      state.finalSum = state.finalOrder.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.sum,
+        0
+      );
+    },
   },
 });
 
-export const { setActiveCategory, setIsOpen, setData, setFinalCount, setName } =
-  counterSlice.actions;
+export const {
+  setActiveCategory,
+  setIsOpen,
+  setData,
+  setFinalCount,
+  setName,
+  setFinalOrder,
+  accumulatorSum,
+} = counterSlice.actions;
 
 export default counterSlice.reducer;
