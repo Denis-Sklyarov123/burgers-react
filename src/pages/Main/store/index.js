@@ -8,6 +8,7 @@ const initialState = {
   finalCount: null,
   finalOrder: [],
   finalSum: 0,
+  products: [],
 };
 
 export const counterSlice = createSlice({
@@ -32,6 +33,9 @@ export const counterSlice = createSlice({
     setFinalOrder: (state, value) => {
       state.finalOrder = value.payload;
     },
+    setProducts: (state, value) => {
+      state.products = value.payload;
+    },
     accumulatorSum: (state) => {
       state.finalSum = state.finalOrder.reduce(
         (accumulator, currentValue) => accumulator + currentValue.sum,
@@ -48,6 +52,7 @@ export const {
   setFinalCount,
   setName,
   setFinalOrder,
+  setProducts,
   accumulatorSum,
 } = counterSlice.actions;
 

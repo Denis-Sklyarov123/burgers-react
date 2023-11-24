@@ -6,6 +6,7 @@ const initialState = {
   sum: 0,
   activeCategory: "sizes",
   order: {},
+  fillings: [],
 };
 
 export const counterSlice = createSlice({
@@ -33,6 +34,9 @@ export const counterSlice = createSlice({
     setOrder: (state, value) => {
       state.order = value.payload;
     },
+    setFillings: (state, value) => {
+      state.fillings = value.payload;
+    },
     resetStore: () => initialState,
   },
 });
@@ -43,6 +47,7 @@ export const {
   setTitle,
   setSum,
   setActiveCategory,
+  setFillings,
   setOrder,
   resetStore,
 } = counterSlice.actions;

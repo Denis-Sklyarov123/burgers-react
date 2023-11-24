@@ -1,8 +1,8 @@
-import BtnCustom from "../BtnCustom";
+import BtnCustom from "../../BtnCustom";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "../../store/test/index";
+import { increment, decrement } from "../../../store/test/index";
 import "./style.css";
-import { setIsOpen, setName } from "../../pages/Main/store/index";
+import { setIsOpen, setName } from "../../../pages/Main/store/index";
 
 function Card({ item }) {
   const makeImgUrl = (url) => `/src/assets/img${url}`;

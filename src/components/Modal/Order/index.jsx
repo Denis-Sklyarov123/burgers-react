@@ -9,14 +9,16 @@ import BtnCustom from "../../BtnCustom";
 import Price from "./Price";
 import Counter from "./Counter/index";
 import { useDispatch, useSelector } from "react-redux";
-import { setSum, resetStore } from "./store";
+import { setSum, resetStore, setFillings } from "./store";
 import {
   setIsOpen,
   setFinalOrder,
   accumulatorSum,
 } from "../../../pages/Main/store/index";
+import Api from "../../../api/api";
 
-function ModalWindow({ isOpen, cards }) {
+function ModalWindow({ isOpen }) {
+  const fillings = useSelector((state) => state.modalOrder.fillings);
   const count = useSelector((state) => state.modalOrder.count);
   const title = useSelector((state) => state.modalOrder.title);
   const sum = useSelector((state) => state.modalOrder.sum);
@@ -44,6 +46,20 @@ function ModalWindow({ isOpen, cards }) {
     }
     dispatch(setSum(_sum * count));
   }, [dispatch, order, count]);
+
+  useEffect(() => {
+    const loadCategories = async () => {
+      if (activeCategory === "ready") {
+        return;
+      }
+      const { data: fillings } = await Api.getFillingsByCategory(
+        activeCategory
+      );
+      dispatch(setFillings(fillings));
+    };
+
+    loadCategories();
+  }, [dispatch, activeCategory]);
 
   const finalSum = () => {
     dispatch(setFinalOrder([...finalOrder, { name, sum, count }]));
@@ -88,12 +104,8 @@ function ModalWindow({ isOpen, cards }) {
             </div>
 
             <div>
-              {cards.sizes && title !== 5 ? (
-                <Cards
-                  title={title}
-                  order={order}
-                  cards={cards[activeCategory]}
-                />
+              {fillings && title !== 5 ? (
+                <Cards title={title} order={order} cards={fillings} />
               ) : (
                 <ReadySection order={order} />
               )}

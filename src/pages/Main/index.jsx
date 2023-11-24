@@ -1,24 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { menu } from "../../constants/index";
 import Basket from "../../components/Basket/index";
 import Menu from "../../components/Menu/index";
-import Api from "../../api/api";
 import CardContainer from "../../components/CardContainer";
 import ModalWindow from "../../components/Modal/Order";
 import { useDispatch, useSelector } from "react-redux";
-import { setData } from "./store/index";
+import { setProducts } from "./store/index";
+import Api from "../../api/api";
+import { Spinner } from "react-bootstrap";
+import "./style.css";
 
 export function Main() {
-  const data = useSelector((state) => state.mainPage.data);
+  const products = useSelector((state) => state.mainPage.products);
   const activeCategory = useSelector((state) => state.mainPage.activeCategory);
   const isOpen = useSelector((state) => state.mainPage.isOpen);
   const dispatch = useDispatch();
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    Api.getData().then((data) => {
-      dispatch(setData(data));
-    });
-  }, [dispatch]);
+    const loadCategories = async () => {
+      const { data: products } = await Api.getByCategory(activeCategory);
+      dispatch(setProducts(products));
+      setLoading(false);
+    };
+
+    loadCategories();
+  }, [dispatch, activeCategory]);
 
   return (
     <div className="d-flex flex-row overflow-auto">
@@ -26,14 +33,28 @@ export function Main() {
         <Menu menu={menu} activeCategory={activeCategory} />
         <Basket />
       </div>
-      <div>
-        {data && (
-          <CardContainer
-            cards={data.menu.filter((item) => item.category === activeCategory)}
-          />
+      <div style={{ width: "100%" }}>
+        {isLoading === true ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100%",
+            }}
+          >
+            <Spinner
+              animation="border"
+              variant="warning"
+              style={{ width: "10rem", height: "10rem" }}
+              role="status"
+            ></Spinner>
+          </div>
+        ) : (
+          products && <CardContainer cards={products} />
         )}
       </div>
-      <div>{data && <ModalWindow cards={data} isOpen={isOpen} />}</div>
+      <div>{isOpen && <ModalWindow isOpen={isOpen} />}</div>
     </div>
   );
 }
