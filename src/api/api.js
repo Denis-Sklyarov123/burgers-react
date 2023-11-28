@@ -1,12 +1,13 @@
 import axios from "axios";
 
+const serverUrl = import.meta.env.VITE_SERVER_URL ?? "http://localhost:3000";
+
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: serverUrl,
   withCredentials: true,
 });
 
 export default class Api {
-  static getData = () => axiosInstance.get("/products/all");
   static getByCategory = (selectedCategory) =>
     axiosInstance.get("/products/byCategory", {
       params: { selectedCategory },

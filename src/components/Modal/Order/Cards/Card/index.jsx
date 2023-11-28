@@ -3,8 +3,9 @@ import { modalMenuItems } from "../../../../../constants";
 import "./style.css";
 import { setOrder } from "../../store/index";
 
+const makeImgUrl = (url) => `/src/assets/img${url}`;
+
 function Card({ item, order, title, isActive }) {
-  const makeImgUrl = (url) => `/src/assets/img${url}`;
   const keyCategory = modalMenuItems[title].keyCategory;
   const dispatch = useDispatch();
 
@@ -59,25 +60,23 @@ function Card({ item, order, title, isActive }) {
   };
 
   return (
-    <>
-      <button
-        onClick={() => orderFormation()}
-        className={`product-size-card-buttons ${
-          isActive ? "active-cards-modal" : ""
-        }`}
-        id="${this.id}"
-      >
-        <div className="options-background-little-bread">
-          <img className="img-filling" src={makeImgUrl(item.image)} />
-        </div>
-        <div className="the-final-filling-in-the-product">{item.name}</div>
-        <div className="price-size-letters">
-          <div className="price-size-letters">Цена: </div>
-          <div className="price-filling">{item.price} </div>
-          <div className="price-size-letters">руб.</div>
-        </div>
-      </button>
-    </>
+    <button
+      onClick={() => orderFormation()}
+      className={`product-size-card-buttons ${
+        isActive ? "active-cards-modal" : ""
+      }`}
+      id="${this.id}"
+    >
+      <div className="options-background-little-bread">
+        <img className="img-filling" src={makeImgUrl(item.image)} />
+      </div>
+      <div className="the-final-filling-in-the-product">{item.name}</div>
+      <div className="price-size-letters">
+        <div className="price-size-letters">Цена: </div>
+        <div className="price-filling">{item.price} </div>
+        <div className="price-size-letters">руб.</div>
+      </div>
+    </button>
   );
 }
 

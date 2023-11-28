@@ -22,7 +22,7 @@ export const counterSlice = createSlice({
     countDecrement: (state) => {
       state.count = state.count === 1 ? state.count : --state.count;
     },
-    setTitle: (state, value) => {
+    setTitleIndex: (state, value) => {
       state.title = value.payload;
     },
     setSum: (state, value) => {
@@ -44,7 +44,7 @@ export const counterSlice = createSlice({
 export const {
   countIncrement,
   countDecrement,
-  setTitle,
+  setTitleIndex,
   setSum,
   setActiveCategory,
   setFillings,
