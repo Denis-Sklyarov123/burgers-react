@@ -1,13 +1,26 @@
 import BtnCustom from "../../BtnCustom";
-import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "../../../store/test/index";
+import { useDispatch, useSelector } from "react-redux";
 import "./style.css";
 import { setIsOpen, setName } from "../../../pages/Main/store/index";
+import { useEffect, useState } from "react";
+import { setFinalOrder, accumulatorSum } from "../../../pages/Main/store/index";
+import { setSum } from "../../Modal/Order/store";
 
 function Card({ item }) {
   const makeImgUrl = (url) => `/src/assets/img${url}`;
-  const count = useSelector((state) => state.counter.value);
+  const [count, setCount] = useState(1);
+  const sum = useSelector((state) => state.modalOrder.sum);
+  const finalOrder = useSelector((state) => state.mainPage.finalOrder);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setSum(item.price * count));
+  }, [dispatch, count, item]);
+
+  const finalSum = () => {
+    dispatch(setFinalOrder([...finalOrder, { name: item.name, sum, count }]));
+    dispatch(accumulatorSum());
+  };
 
   return (
     <>
@@ -30,17 +43,19 @@ function Card({ item }) {
           <img
             className="minus"
             src="src/assets/img/minus.svg"
-            onClick={() => dispatch(decrement())}
+            onClick={() => setCount(count === 1 ? 1 : count - 1)}
           />
           <input value={count} className="input" />
           <img
             className="plus"
             src="src/assets/img/plus.svg"
-            onClick={() => dispatch(increment())}
+            onClick={() => setCount(count + 1)}
           />
         </div>
         <div></div>
-        <BtnCustom classList="in-basket">В КОРЗИНУ</BtnCustom>
+        <BtnCustom classList="in-basket" callback={() => finalSum()}>
+          В КОРЗИНУ
+        </BtnCustom>
       </div>
     </>
   );

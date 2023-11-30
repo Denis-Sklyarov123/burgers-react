@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { menu } from "../../constants/index";
 import Basket from "../../components/Basket/index";
 import Menu from "../../components/Menu/index";
 import CardContainer from "../../components/CardContainer";
 import ModalWindow from "../../components/Modal/Order";
 import { useDispatch, useSelector } from "react-redux";
-import { setProducts } from "./store/index";
+import { setProducts, setMenu } from "./store/index";
 import Api from "../../api/api";
 import { Spinner } from "react-bootstrap";
 import "./style.css";
 
 export function Main() {
+  const menu = useSelector((state) => state.mainPage.menu);
   const products = useSelector((state) => state.mainPage.products);
   const activeCategory = useSelector((state) => state.mainPage.activeCategory);
   const isOpen = useSelector((state) => state.mainPage.isOpen);
@@ -26,6 +26,14 @@ export function Main() {
 
     loadCategories();
   }, [dispatch, activeCategory]);
+
+  useEffect(() => {
+    const loadMenu = async () => {
+      const { data: menu } = await Api.getMenu();
+      dispatch(setMenu(menu));
+    };
+    loadMenu();
+  }, [dispatch]);
 
   return (
     <div className="d-flex flex-row overflow-auto">

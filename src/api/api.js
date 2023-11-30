@@ -13,7 +13,11 @@ export default class Api {
       params: { selectedCategory },
     });
   static getFillingsByCategory = (category) =>
-    axiosInstance.get("/products/byCategoryModal", {
+    axiosInstance.get("/fillings/byCategory", {
+      params: { category },
+    });
+  static getMenu = (category) =>
+    axiosInstance.get("/menu", {
       params: { category },
     });
 }

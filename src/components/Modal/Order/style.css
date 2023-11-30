@@ -99,3 +99,16 @@
   flex-direction: row;
   justify-content: center;
 }
+
+.add-to-final-price {
+  background: gold;
+  color: white;
+  font-weight: 500;
+  min-width: 150px;
+  max-height: 29px;
+  margin-top: 5px;
+  border: solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}

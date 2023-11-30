@@ -1,33 +1,33 @@
-export const menu = [
-  {
-    keyCategory: "sandwiches",
-    nameCategory: "Сендвичи",
-  },
-  {
-    keyCategory: "burgers",
-    nameCategory: "Бургеры",
-  },
-  {
-    keyCategory: "pizza",
-    nameCategory: "Пицца",
-  },
-  {
-    keyCategory: "shaurma",
-    nameCategory: "Шаурма",
-  },
-  {
-    keyCategory: "salads",
-    nameCategory: "Тортилья и Салаты",
-  },
-  {
-    keyCategory: "chicken",
-    nameCategory: "Курица и Картошка",
-  },
-  {
-    keyCategory: "drinks",
-    nameCategory: "Напитки и Десерт",
-  },
-];
+// export const menu = [
+//   {
+//     keyCategory: "sandwiches",
+//     nameCategory: "Сендвичи",
+//   },
+//   {
+//     keyCategory: "burgers",
+//     nameCategory: "Бургеры",
+//   },
+//   {
+//     keyCategory: "pizza",
+//     nameCategory: "Пицца",
+//   },
+//   {
+//     keyCategory: "shaurma",
+//     nameCategory: "Шаурма",
+//   },
+//   {
+//     keyCategory: "salads",
+//     nameCategory: "Тортилья и Салаты",
+//   },
+//   {
+//     keyCategory: "chicken",
+//     nameCategory: "Курица и Картошка",
+//   },
+//   {
+//     keyCategory: "drinks",
+//     nameCategory: "Напитки и Десерт",
+//   },
+// ];
 
 export const titleList = {
   0: "Выберите размер сендвича",
