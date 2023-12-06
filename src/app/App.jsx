@@ -2,15 +2,17 @@ import "./App.css";
 import Main from "../pages/Main/index";
 import Register from "../components/Modal/Register";
 import { useState } from "react";
+import Authorization from "../components/Modal/Authorization";
 
 function App() {
   const [isShow, setIsShow] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
       <div className="authorization">
         <button
-          style={{ margin: 10 }}
+          onClick={() => setIsOpen(true)}
           type="button"
           className="btn btn-warning"
         >
@@ -18,7 +20,6 @@ function App() {
         </button>
         <button
           onClick={() => setIsShow(true)}
-          style={{ margin: 10 }}
           type="button"
           className="btn btn-warning"
         >
@@ -29,6 +30,7 @@ function App() {
       <div>
         <Main />
       </div>
+      <Authorization isOpen={isOpen} handleClose={() => setIsOpen(false)} />
       <Register isShow={isShow} handleClose={() => setIsShow(false)} />
     </div>
   );

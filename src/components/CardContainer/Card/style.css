@@ -49,36 +49,11 @@
   font-size: 18px;
 }
 
-.quantity {
-  font-weight: 700;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 13px;
-  /* margin-top: 10px; */
-}
-
-.buttons {
-  display: flex;
-  flex-direction: row;
-  cursor: pointer;
-}
-
-.input {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 14px;
-  max-width: 50px;
-  margin: 0 20px 0 20px;
-  border-radius: 4px;
-  outline: none;
-  text-align: center;
-  border: 1px solid gray;
-}
-
 .in-basket {
   font-size: 13px;
   background: gold;
   color: white;
   font-weight: 500;
-  /* padding: 3px 3px; */
   min-width: 150px;
   margin-top: 5px;
   margin-bottom: 30px;

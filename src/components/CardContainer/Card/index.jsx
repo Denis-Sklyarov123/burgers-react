@@ -5,6 +5,7 @@ import { setIsOpen, setName } from "../../../pages/Main/store/index";
 import { useEffect, useState } from "react";
 import { setFinalOrder, accumulatorSum } from "../../../pages/Main/store/index";
 import { setSum } from "../../Modal/Order/store";
+import Counter from "../../Counter";
 
 function Card({ item }) {
   const makeImgUrl = (url) => `/src/assets/img${url}`;
@@ -38,21 +39,11 @@ function Card({ item }) {
           {item.description}
         </div>
         <div className="price">Цена: {item.price} руб.</div>
-        <div className="quantity">КОЛИЧЕСТВО</div>
-        <div className="buttons">
-          <img
-            className="minus"
-            src="src/assets/img/minus.svg"
-            onClick={() => setCount(count === 1 ? 1 : count - 1)}
-          />
-          <input value={count} className="input" />
-          <img
-            className="plus"
-            src="src/assets/img/plus.svg"
-            onClick={() => setCount(count + 1)}
-          />
-        </div>
-        <div></div>
+        <Counter
+          decrement={() => setCount(count === 1 ? 1 : count - 1)}
+          increment={() => setCount(count + 1)}
+          count={count}
+        ></Counter>
         <BtnCustom classList="in-basket" callback={() => finalSum()}>
           В КОРЗИНУ
         </BtnCustom>

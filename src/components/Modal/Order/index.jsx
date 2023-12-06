@@ -7,9 +7,15 @@ import PrevNextContainer from "./PrevNextContainer";
 import ReadySection from "./ReadySection";
 import BtnCustom from "../../BtnCustom";
 import Price from "./Price";
-import Counter from "./Counter/index";
+import Counter from "../../Counter/index";
 import { useDispatch, useSelector } from "react-redux";
-import { setSum, resetStore, setFillings } from "./store";
+import {
+  setSum,
+  resetStore,
+  setFillings,
+  countDecrement,
+  countIncrement,
+} from "./store";
 import {
   setIsOpen,
   setFinalOrder,
@@ -117,7 +123,11 @@ function ModalWindow({ isOpen }) {
             id="id-buttons-and-quantity"
           >
             <div>
-              <Counter />
+              <Counter
+                decrement={() => dispatch(countDecrement())}
+                increment={() => dispatch(countIncrement())}
+                count={count}
+              ></Counter>
             </div>
             <div className="price-and-basket">
               <div>
