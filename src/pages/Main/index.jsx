@@ -4,10 +4,12 @@ import Menu from "../../components/Menu/index";
 import CardContainer from "../../components/CardContainer";
 import ModalWindow from "../../components/Modal/Order";
 import { useDispatch, useSelector } from "react-redux";
-import { setProducts, setMenu } from "./store/index";
+import { setProducts, setMenu, setUserData } from "./store/index";
 import Api from "../../api/api";
 import { Spinner } from "react-bootstrap";
 import "./style.css";
+import { jwtDecode } from "jwt-decode";
+import Cookies from "js-cookie";
 
 export function Main() {
   const menu = useSelector((state) => state.mainPage.menu);
@@ -33,6 +35,13 @@ export function Main() {
       dispatch(setMenu(menu));
     };
     loadMenu();
+
+    const token = Cookies.get("Token");
+    if (!token) {
+      return;
+    }
+    const user = jwtDecode(token);
+    dispatch(setUserData(user));
   }, [dispatch]);
 
   return (

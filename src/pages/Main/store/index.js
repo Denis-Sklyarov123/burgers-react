@@ -10,6 +10,7 @@ const initialState = {
   finalSum: 0,
   products: [],
   menu: [],
+  user: null,
 };
 
 export const counterSlice = createSlice({
@@ -46,6 +47,9 @@ export const counterSlice = createSlice({
     setMenu: (state, value) => {
       state.menu = value.payload;
     },
+    setUserData: (state, value) => {
+      state.user = value.payload;
+    },
   },
 });
 
@@ -59,6 +63,7 @@ export const {
   setProducts,
   accumulatorSum,
   setMenu,
+  setUserData,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

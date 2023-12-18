@@ -17,5 +17,10 @@ export default class Api {
       params: { category },
     });
   static getMenu = () => axiosInstance.get("/menu");
-  static getUser = (user) => axiosInstance.post("/user/create", user);
+  static createUser = (user) => axiosInstance.post("/user/create", user);
+  static login = (user) =>
+    axiosInstance.post("/user/login", {
+      emailOrUserName: user.login,
+      password: user.password,
+    });
 }

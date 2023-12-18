@@ -3,8 +3,6 @@ import "./style.css";
 import { setActiveCategory, setTitleIndex } from "../store/index";
 import { useDispatch } from "react-redux";
 
-// classnames
-
 function Menu({ title }) {
   const dispatch = useDispatch();
 

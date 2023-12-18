@@ -15,18 +15,14 @@ function Register({ isShow, handleClose }) {
   });
   const [isValidate, setValidate] = useState(false);
 
-  const loadUser = async () => {
-    await Api.getUser(user);
-  };
-
-  const addUser = () => {
+  const addUser = async () => {
     setValidate(true);
     for (const item in user) {
       if (user[item] === "") {
         return;
       }
     }
-    loadUser();
+    await Api.createUser(user);
     handleClose();
     console.log(user);
   };
