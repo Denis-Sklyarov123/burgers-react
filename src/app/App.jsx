@@ -4,10 +4,12 @@ import Register from "../components/Modal/Register";
 import { useState } from "react";
 import Authorization from "../components/Modal/Authorization";
 import { useSelector } from "react-redux";
+import PersonalArea from "../components/Modal/PersonalArea";
 
 function App() {
   const [isShow, setIsShow] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
   const user = useSelector((state) => state.mainPage.user);
 
@@ -17,8 +19,9 @@ function App() {
         {user ? (
           <div className="container-avatar">
             <img
+              onClick={() => setModalShow(true)}
               className="avatar"
-              src="https://ui-avatars.com/api/?name=Denis&rounded=true&background=FFA500"
+              src={`https://ui-avatars.com/api/?name=${user.name}&rounded=true&background=FFA500`}
               alt="avatar"
             />
             <div className="name-avatar">{user.name ?? "Name"}</div>
@@ -46,6 +49,7 @@ function App() {
       <div>
         <Main />
       </div>
+      <PersonalArea show={modalShow} onHide={() => setModalShow(false)} />
       <Authorization isOpen={isOpen} handleClose={() => setIsOpen(false)} />
       <Register isShow={isShow} handleClose={() => setIsShow(false)} />
     </div>
