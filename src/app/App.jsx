@@ -3,14 +3,21 @@ import Main from "../pages/Main/index";
 import Register from "../components/Modal/Register";
 import { useState } from "react";
 import Authorization from "../components/Modal/Authorization";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PersonalArea from "../components/Modal/PersonalArea";
+import Cookies from "js-cookie";
+import { setUserData } from "../pages/Main/store";
 
 function App() {
   const [isShow, setIsShow] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [modalShow, setModalShow] = useState(false);
+  const dispatch = useDispatch();
 
+  const deleteCookies = () => {
+    Cookies.remove("Token");
+    dispatch(setUserData(null));
+  };
   const user = useSelector((state) => state.mainPage.user);
 
   return (
@@ -49,7 +56,16 @@ function App() {
       <div>
         <Main />
       </div>
-      <PersonalArea show={modalShow} onHide={() => setModalShow(false)} />
+      <PersonalArea
+        show={modalShow}
+        onHide={() => {
+          setModalShow(false);
+        }}
+        reLog={() => {
+          setModalShow(false);
+          deleteCookies();
+        }}
+      />
       <Authorization isOpen={isOpen} handleClose={() => setIsOpen(false)} />
       <Register isShow={isShow} handleClose={() => setIsShow(false)} />
     </div>

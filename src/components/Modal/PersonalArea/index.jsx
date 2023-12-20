@@ -1,6 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./style.css";
+import UncontrolledExample from "./UncontrolledTabsExample";
 
 function PersonalArea(props) {
   return (
@@ -20,19 +21,11 @@ function PersonalArea(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div>
-          <Button className="buttons-personal-area">Личная информация</Button>
-          <Button className="buttons-personal-area">Заказы</Button>
-        </div>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
+        <UncontrolledExample />
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide} className="buttons-personal-area">
-          Close
+        <Button onClick={props.reLog} className="button-close-personal-area">
+          Выход
         </Button>
       </Modal.Footer>
     </Modal>

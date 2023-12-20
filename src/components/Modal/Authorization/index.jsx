@@ -17,12 +17,13 @@ function Authorization({ isOpen, handleClose }) {
 
   const loginUser = async () => {
     setValidate(true);
-    for (const item in user) {
-      if (user[item] === "") {
-        return;
-      }
-    }
     const { data } = await Api.login(user);
+
+    setUser({
+      login: "",
+      password: "",
+    });
+
     dispatch(setUserData(data.user));
     handleClose();
   };
