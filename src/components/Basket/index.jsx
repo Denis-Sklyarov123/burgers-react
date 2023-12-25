@@ -1,10 +1,13 @@
+import { useState } from "react";
 import BtnCustom from "../BtnCustom";
+import FinishOrder from "../Modal/FinishOrder";
 import "./style.css";
 import { useSelector } from "react-redux";
 
 function Basket() {
   const finalOrder = useSelector((state) => state.mainPage.finalOrder);
   const finalSum = useSelector((state) => state.mainPage.finalSum);
+  const [modalShow, setModalShow] = useState(false);
 
   return (
     <div className="basket-container">
@@ -54,8 +57,14 @@ function Basket() {
         </div>
       </div>
       <div className="checkout">
-        <BtnCustom classList="ordering-food">ОФОРМИТЬ ЗАКАЗ</BtnCustom>
+        <BtnCustom
+          classList="ordering-food"
+          callback={() => setModalShow(true)}
+        >
+          ОФОРМИТЬ ЗАКАЗ
+        </BtnCustom>
       </div>
+      <FinishOrder show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );
 }

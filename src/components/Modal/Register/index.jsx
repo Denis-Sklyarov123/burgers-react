@@ -24,7 +24,7 @@ function Register({ isShow, handleClose }) {
     }
     await Api.createUser(user);
     handleClose();
-    console.log(user);
+    // console.log(user);
   };
 
   return (
