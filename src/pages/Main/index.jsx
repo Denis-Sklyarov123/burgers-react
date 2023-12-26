@@ -31,7 +31,7 @@ export function Main() {
 
   useEffect(() => {
     const loadMenu = async () => {
-      const { data: menu } = await Api.getMenu();
+      const { data: menu } = await Api.getCategories();
       dispatch(setMenu(menu));
     };
     loadMenu();
