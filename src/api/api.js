@@ -12,10 +12,8 @@ export default class Api {
     axiosInstance.get("/products/byCategory", {
       params: { selectedCategory },
     });
-  static getFillingsByCategory = (category) =>
-    axiosInstance.get("/fillings/byCategory", {
-      params: { category },
-    });
+  static getFillingsByCategory = (params) =>
+    axiosInstance.get("/fillings/byCategory", { params });
   static getCategories = () => axiosInstance.get("/categories");
   static createUser = (user) => axiosInstance.post("/user/create", user);
   static login = (user) =>

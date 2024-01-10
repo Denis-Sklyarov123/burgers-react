@@ -12,6 +12,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@reduxjs/toolkit": "^1.9.7",
+    "@sentry/node": "^7.92.0",
     "axios": "^1.6.2",
     "bootstrap": "^5.3.2",
     "js-cookie": "^3.0.5",
