@@ -21,7 +21,12 @@ export function Main() {
 
   useEffect(() => {
     const loadCategories = async () => {
-      const { data: products } = await Api.getByCategory(activeCategory);
+      const { data: products } = await Api.getByCategory({
+        category: activeCategory,
+        sort: { price: -1 },
+        limit: 5,
+        page: 1,
+      });
       dispatch(setProducts(products));
       setLoading(false);
     };

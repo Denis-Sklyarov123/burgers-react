@@ -8,10 +8,8 @@ const axiosInstance = axios.create({
 });
 
 export default class Api {
-  static getByCategory = (selectedCategory) =>
-    axiosInstance.get("/products/byCategory", {
-      params: { selectedCategory },
-    });
+  static getByCategory = (params) =>
+    axiosInstance.get("/products/byCategory", { params });
   static getFillingsByCategory = (params) =>
     axiosInstance.get("/fillings/byCategory", { params });
   static getCategories = () => axiosInstance.get("/categories");

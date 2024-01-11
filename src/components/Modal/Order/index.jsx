@@ -61,7 +61,8 @@ function ModalWindow({ isOpen }) {
       const { data: fillings } = await Api.getFillingsByCategory({
         type: activeCategory,
         sort: { price: 1 },
-        limit: 1,
+        limit: 10,
+        page: 1,
       });
       dispatch(setFillings(fillings));
     };
