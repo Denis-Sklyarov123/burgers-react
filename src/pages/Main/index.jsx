@@ -23,7 +23,7 @@ export function Main() {
     const loadCategories = async () => {
       const { data: products } = await Api.getByCategory({
         category: activeCategory,
-        sort: { price: -1 },
+        sort: { price: 1 },
         limit: 5,
         page: 1,
       });
